@@ -82,10 +82,8 @@ modules:
   - name: liblxi
     sources:
       - type: archive
-        url: https://github.com/lxi-tools/liblxi/releases/download/v1.14/liblxi-1.14.tar.xz
-        sha256: 6c9d60fd7798cfeabef3ecb897dd249f75c0b13f95ce878e789bae8cb2d04c68
-      - type: patch
-        path: 0001-Fix-meson-libtirpc-dependency.patch
+        url: https://github.com/lxi-tools/liblxi/releases/download/v1.15/liblxi-1.15.tar.xz
+        sha256: c334ee3c4cc668821f356181afa1cd33e7113aef5464b187ac5b842059abb8b4
     buildsystem: meson
 
   - name: pango
