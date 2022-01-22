@@ -1,0 +1,65 @@
+From 5c2fe3a33a3351e1d0ef6760a6689583fb4a5e35 Mon Sep 17 00:00:00 2001
+From: Martin Lund <martin.lund@keep-it-simple.com>
+Date: Sat, 22 Jan 2022 00:08:58 +0100
+Subject: [PATCH] Fix meson libtirpc dependency
+
+Remove the hardcoded include patch to libtirpc and replace it with one
+dynamically resolved via pkg-config.
+
+The reason for implementing the meson dependency check this way is to
+avoid linking with libtirpc because it is broken with regards to its Sun
+RPC implementation so instead we link with the RPC implementation which
+still reside in glibc. However, glibc removed their RPC header files so
+we need the headers from libtirpc.
+
+Further investigation is required to find and fix the bug in the
+libtirpc RPC implementation so we can get back to normal. They changed
+something moving it out of glibc and they shouldn't have.
+---
+ src/meson.build | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/src/meson.build b/src/meson.build
+index 043859c..4202dda 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -10,7 +10,6 @@ liblxi_sources = [
+ 
+ liblxi_deps = [
+   dependency('avahi-client', required: true),
+-  #  dependency('libtirpc', required: true),
+   dependency('libxml-2.0', required: true),
+   dependency('threads', required: true),
+ ]
+@@ -19,9 +18,9 @@ if meson.get_compiler('c').has_header('avahi-client/client.h')
+   add_project_arguments('-DHAVE_AVAHI', language: 'c')
+ endif
+ 
+-if not meson.get_compiler('c').has_header('tirpc/rpc/rpc.h')
+-  error('Please install libtirpc headers')
+-endif
++tirpc_dep = dependency('libtirpc', required: true)
++tirpc_incpath = join_paths(tirpc_dep.get_variable(pkgconfig: 'includedir'), 'tirpc')
++tirpc_incdir = include_directories(tirpc_incpath)
+ 
+ liblxi_c_args = [
+   '-Wno-unused-variable',
+@@ -29,7 +28,6 @@ liblxi_c_args = [
+   '-Wno-unused-result',
+   '-fvisibility=hidden',
+   '-D_GNU_SOURCE',
+-  '-I/usr/include/tirpc',
+ ]
+ 
+ liblxi = shared_library(
+@@ -38,6 +36,7 @@ liblxi = shared_library(
+   dependencies: liblxi_deps,
+   install: true,
+   c_args: liblxi_c_args,
++  include_directories: tirpc_incdir,
+   link_args: ['-fvisibility=hidden', '-Wl,-init,init'],
+   version: '1.0.0',
+ )
+-- 
+2.34.1
+
