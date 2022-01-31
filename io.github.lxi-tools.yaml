@@ -9,7 +9,7 @@ finish-args:
   - "--socket=x11"
   - "--socket=wayland"
   - "--share=network"
-  - "--device=dri"  # for opengl
+  - "--device=dri"
   - "--filesystem=host"
 modules:
   - name: lua
