@@ -136,7 +136,7 @@ modules:
     sources: 
       - type: git
         url: https://github.com/lxi-tools/lxi-tools.git
-        branch: master
+        commit: 88a700dd65904b946910664e433cd348140d1c81
     buildsystem: meson
     config-opts:
       - "-Dgui=true"
