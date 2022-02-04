@@ -53,7 +53,7 @@ modules:
   - name: liblxi
     sources:
       - type: archive
-        url: https://github.com/lxi-tools/liblxi/releases/download/v1.15/liblxi-1.16.tar.xz
+        url: https://github.com/lxi-tools/liblxi/releases/download/v1.16/liblxi-1.16.tar.xz
         sha256: e92a0c31c05a36edb8870d478a569a6ad08718cdbc70e72e64a3b23d4bcd89ec
     buildsystem: meson
 
