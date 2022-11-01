@@ -1,7 +1,7 @@
 ---
 app-id: io.github.lxi-tools
 runtime: org.gnome.Platform
-runtime-version: '41'
+runtime-version: '43'
 sdk: org.gnome.Sdk
 command: lxi-gui
 finish-args:
@@ -17,15 +17,15 @@ modules:
   - name: libtirpc
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.2.tar.bz2
-        sha256: e24eb88b8ce7db3b7ca6eb80115dd1284abc5ec32a8deccfed2224fc2532b9fd
+        url: https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.3.tar.bz2
+        sha256: 6474e98851d9f6f33871957ddee9714fdcd9d8a5ee9abb5a98d63ea2e60e12f3
     buildsystem: autotools
 
   - name: rpcsvc-proto
     sources:
       - type: archive
         url: https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.2/rpcsvc-proto-1.4.2.tar.xz
-        sha256: 678851b9f7ddf4410d2859c12016b65a6dd1a0728d478f18aeb54d165352f17c 
+        sha256: 678851b9f7ddf4410d2859c12016b65a6dd1a0728d478f18aeb54d165352f17c
     buildsystem: autotools
 
   - name: libevent
@@ -53,29 +53,29 @@ modules:
   - name: liblxi
     sources:
       - type: archive
-        url: https://github.com/lxi-tools/liblxi/releases/download/v1.16/liblxi-1.16.tar.xz
-        sha256: e92a0c31c05a36edb8870d478a569a6ad08718cdbc70e72e64a3b23d4bcd89ec
+        url: https://github.com/lxi-tools/liblxi/releases/download/v1.18/liblxi-1.18.tar.xz
+        sha256: d24b4f5d3a909672e3df7b55d6dc2b03043b013ae25cfbf35cf079ac260b5297
     buildsystem: meson
 
   - name: pango
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/pango/1.50/pango-1.50.3.tar.xz
-        sha256: 4add05edf51c1fb375a1ccde7498914120e23cb280dd7395b1aeb441f1838a4c
+        url: https://download.gnome.org/sources/pango/1.50/pango-1.50.11.tar.xz
+        sha256: 8800f812d89ee61388188703203f3a7878963c22f8695aaf1fa0a1a1428d17ae
     buildsystem: meson
 
   - name: gtk4
     sources:
       - type: archive
-        url: https://download-fallback.gnome.org/sources/gtk/4.6/gtk-4.6.0.tar.xz
-        sha256: 782d5951fbfd585fc9ec76c09d07e28e6014c72db001fb567fff217fb96e4d8c
+        url: https://download-fallback.gnome.org/sources/gtk/4.6/gtk-4.6.8.tar.xz
+        sha256: 9ffded16edc280680289034b02518fd0ce873b545c537ca64c667d2236731d39
     buildsystem: meson
 
   - name: gtksourceview
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/gtksourceview.git
-        commit: 407af3954ea0e3b0ea86046780ac20b0c4ae9805
+        commit: ec0b434c4ebea7e9c1920013af2a911c4b28a66a
     buildsystem: meson
 
   - name: libsassc
@@ -90,8 +90,8 @@ modules:
   - name: sassc
     sources:
       - type: archive
-        url: https://github.com/lazka/sassc/archive/refs/tags/3.5.0.tar.gz
-        sha256: 26f54e31924b83dd706bc77df5f8f5553a84d51365f0e3c566df8de027918042
+        url: https://github.com/sass/sassc/archive/refs/tags/3.6.2.tar.gz
+        sha256: 608dc9002b45a91d11ed59e352469ecc05e4f58fc1259fc9a9f5b8f0f8348a03
       - type: script
         commands: [ "autoreconf -fi" ]
     buildsystem: autotools
@@ -99,15 +99,15 @@ modules:
   - name: libadwaita
     sources:
       - type: archive
-        url: https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.0.1/libadwaita-1.0.1.tar.bz2
-        sha256: 5da71c91cc53878f91d0bfcb1c0dabda12ca600160847e1f9f08c375c0d3362e
+        url: https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.2.0/libadwaita-1.2.0.tar.bz2
+        sha256: 9da0df3d2f2f5c0a79becd47d09312124542545e4aa1ea151b993c5f6b939e78
     buildsystem: meson
 
   - name: lxi-gui
-    sources: 
+    sources:
       - type: git
         url: https://github.com/lxi-tools/lxi-tools.git
-        commit: 416166eadcb44208a90a4a2466fda93509072999
+        commit: e9a7b294d8531fe5294649635bc5bd1f41c67c89
     buildsystem: meson
     config-opts:
       - "-Dgui=true"
