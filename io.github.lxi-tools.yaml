@@ -60,22 +60,22 @@ modules:
   - name: pango
     sources:
       - type: archive
-        url: https://download.gnome.org/sources/pango/1.50/pango-1.50.11.tar.xz
-        sha256: 8800f812d89ee61388188703203f3a7878963c22f8695aaf1fa0a1a1428d17ae
+        url: https://download.gnome.org/sources/pango/1.50/pango-1.50.12.tar.xz
+        sha256: caef96d27bbe792a6be92727c73468d832b13da57c8071ef79b9df69ee058fe3
     buildsystem: meson
 
   - name: gtk4
     sources:
       - type: archive
-        url: https://download-fallback.gnome.org/sources/gtk/4.6/gtk-4.6.8.tar.xz
-        sha256: 9ffded16edc280680289034b02518fd0ce873b545c537ca64c667d2236731d39
+        url: https://download-fallback.gnome.org/sources/gtk/4.8/gtk-4.8.2.tar.xz
+        sha256: 85b7a160b6e02eafa4e7d38f046f8720fab537d3fe73c01c864333a983a692a9
     buildsystem: meson
 
   - name: gtksourceview
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/gtksourceview.git
-        commit: ec0b434c4ebea7e9c1920013af2a911c4b28a66a
+        commit: 1e93d67061037c9eb241112c2b7424e31709d868
     buildsystem: meson
 
   - name: libsassc
@@ -107,7 +107,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/lxi-tools/lxi-tools.git
-        commit: e9a7b294d8531fe5294649635bc5bd1f41c67c89
+        commit: 5ee36cdbeb52c021930cac811b63752855e9444e
     buildsystem: meson
     config-opts:
       - "-Dgui=true"
