@@ -15,7 +15,7 @@ Build and install:
 flatpak-builder build io.github.lxi-tools.yaml --force-clean --user --install
 ```
 
-Run:
+Run GUI:
 ```
 flatpak run io.github.lxi-tools
 ```
